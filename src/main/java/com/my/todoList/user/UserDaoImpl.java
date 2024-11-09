@@ -4,6 +4,7 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public int insert(Users user) throws Exception {
+		
 		return 0;
 	}
 
