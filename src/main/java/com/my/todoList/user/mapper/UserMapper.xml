@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.user.mapper.UserMapper">
+	<resultMap id="userMap" type="com.my.todoList.user.Users">
+		<id column="USER_NO" property="userNo"/>
+		<result column="id" property="id"/>
+		<result column="password" property="password"/>
+		<result column="email" property="email"/>
+		<collection property="task" javaType="com.my.todoList.task.Task"
+		resultMap=""
+		>
+		</collection>
+	</resultMap>
+
 	<!-- 유저등록 -->
 	<insert id="insertUser" parameterType="com.my.todoList.user.Users">
 		<selectKey resultType="Integer" keyProperty="userNo" order="BEFORE">
@@ -22,14 +33,11 @@
 		WHERE users.user_no = #{userNo}
 	</delete>
 	
-	<!-- 특정유저 출력 -->
+	<!-- 특정유저 회원정보 출력 -->
 	<select id="selectUserByNo" parameterType="Integer" resultType="com.my.todoList.user.Users">
-		SELECT u.user_no, u.id, u.password, u.email, t.title, t.content, t.startDate, t.EndDate, t.state, c.name 
+		SELECT u.user_no, u.id, u.password, u.email 
 			FROM users u 
 			JOIN task t
-			ON u.user_no = t.user_no
-			JOIN category c
-			ON t.category_no = c.category_no
 			WHERE u.user_no = #{userNo};
 	</select>
 </mapper>

@@ -18,8 +18,8 @@ public class Task {
 	private Integer taskNo;
 	private String title;
 	private String content;
-	private Date endDate;
 	private Date startDate;
+	private Date endDate;
 	private String state;
 	private Category category;
 	private Users user;
