@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.category.mapper.CategoryMapper">
+	<!-- 카테고리등록 -->
+	<insert id="insertCategory" parameterType="com.my.todoList.category.Category">
+		<selectKey resultType="Integer" keyProperty="categoryNo" order="BEFORE">
+			SELECT category_category_no_seq.nextval FROM DUAL;
+		</selectKey>
+		INSERT INTO category
+		VALUES(#{categoryNo}, #{name});
+	</insert>
+</mapper>
