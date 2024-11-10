@@ -1,6 +1,8 @@
-package com.my.todoList.task;
+package com.my.todoList.task.mapper;
 
-public interface TaskDao {
+import com.my.todoList.task.Task;
+
+public interface TaskMapper {
 	//할일 추가 
 	public int insert(Task task) throws Exception;
 	//할일 삭제

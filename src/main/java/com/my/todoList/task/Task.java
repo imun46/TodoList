@@ -19,6 +19,7 @@ public class Task {
 	private String title;
 	private String content;
 	private Date endDate;
+	private Date startDate;
 	private String state;
 	private Category category;
 	private Users user;

@@ -24,21 +24,34 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.3'    //유효성 처리
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // Spring Boot 관련 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation' // 유효성 처리
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // 테스트 의존성
+    
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24' // 최신 버전 확인
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // MyBatis 관련 의존성
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
-	annotationProcessor 'org.projectlombok:lombok'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	
-	/***** mybatis설정 *****/
-	implementation 'org.mybatis:mybatis:3.5.15'
+
+    // 개발 환경에서만 필요한 의존성
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Oracle JDBC 드라이버
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+    // 기타 테스트 관련 의존성
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+plugins {
+    id 'org.springframework.boot' version '3.0.0' // Spring Boot 버전
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }

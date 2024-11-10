@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.my.user.mapper.userMapper">
+<mapper namespace="com.my.user.mapper.UserMapper">
 	<!-- 유저등록 -->
 	<insert id="insertUser" parameterType="com.my.todoList.user.Users">
 		<selectKey resultType="Integer" keyProperty="userNo" order="BEFORE">
