@@ -25,7 +25,7 @@ public class TaskService {
 	}
 	/*할일 출력 특정 pk 한개*/
 	public Task findTaskByTaskNo(Integer TaskNo) throws Exception{
-		return taskDao.selectBytaskNo(TaskNo);
+		return taskDao.selectByTaskNo(TaskNo);
 	}
 	
 	/*할일 전체 출력 (특정 유저)*/

@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @NoArgsConstructor
@@ -22,5 +23,16 @@ public class Task {
 	private Date endDate;
 	private String state;
 	private Category category;
-	private Users user;
+	private Users users;
+	
+	
+	public String toString() {
+	    return "Task{" +
+	            "taskNo=" + taskNo +
+	            ", title='" + title + '\'' +
+	            ", content='" + content + '\'' +
+	            ", category=" + (category != null ? category : "N/A") +  // user의 ID만 출력
+	            ", users=" + (users != null ? users.getUserNo() : "N/A") +  // user의 ID만 출력
+	            '}';
+	}
 }

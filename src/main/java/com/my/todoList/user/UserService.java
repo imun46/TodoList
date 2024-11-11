@@ -38,8 +38,6 @@ public class UserService {
 			return null;
 		}
 		
-		
-		
 		return userDao.selectUserById(id);
 	}
 }

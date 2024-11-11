@@ -1,7 +1,10 @@
 package com.my.todoList.user.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.my.todoList.user.Users;
 
+@Mapper
 public interface UserMapper {
 	
 	public int insert(Users user) throws Exception;

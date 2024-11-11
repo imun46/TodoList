@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.my.task.mapper.TaskMapper">
+<mapper namespace="com.my.todoList.task.mapper.TaskMapper">
 	
 	<resultMap id="taskMap" type="com.my.todoList.task.Task">
 		<id column="task_no" property="taskNo"/>
@@ -9,55 +9,58 @@
 		<result column="startdate" property="startDate"/>
 		<result column="enddate" property="endDate"/>
 		<result column="state" property="state"/>
-		
-		<association property="user" javaType="Users"
-			resultMap=""></association>
-		<association property="cateogyr" javaType="Category"
-			resultMap=""></association>
+			
+	    <!-- Users 객체를 매핑 -->
+	    <association property="users" javaType="com.my.todoList.user.Users" 
+	    resultMap="com.my.todoList.user.mapper.UserMapper.userMap"/>
+	    
+	    <!-- Category 객체를 매핑 -->
+	    <association property="category" javaType="com.my.todoList.category.Category" 
+	    resultMap="com.my.todoList.category.mapper.CategoryMapper.categoryMap"/>
+	    
 	</resultMap>
 	 
 	<!-- 할일등록 -->
-	<insert id="inserTask" parameterType="com.my.todoList.task.Task">
+	<insert id="insert" parameterType="com.my.todoList.task.Task">
 		<selectKey resultType="Integer" keyProperty="taskNo" order="BEFORE">
-			SELECT task_task_no_seq.nextval FROM DUAL;
+			SELECT task_task_no_seq.nextval FROM DUAL
 		</selectKey>
-		INSERT INTO task_no, title, content, startDate, endDate, state, user_no, category_no
-		VALUES(#{taskNo},#{title},#{content},#{startDate}, #{endDate},#{state},#{userNo},#{categoryNo});
+		INSERT INTO task(task_no, title, content, startDate, endDate, state, user_no, category_no)
+		VALUES(#{taskNo},#{title},#{content},#{startDate}, #{endDate},'active',#{users.userNo},#{category.categoryNo})
 
 	</insert>
 	
 	<!-- 할일 수정 -->
-	<update id="updateTask" parameterType="com.my.todoList.task">
-		UPDATE task t
-		SET t.title = #{title}, t.content =#{content}, t.startDate=#{startDate}, t.endDate=#{endDate},t.state=#{state},
-			t.category_no = #{categoryNo}
+	<update id="update" parameterType="com.my.todoList.task.Task">
+		UPDATE task
+		SET title = #{title}, content =#{content}, startDate=#{startDate}, endDate=#{endDate},state=#{state}, category_no =#{category.categoryNo}
+		WHERE task_no = #{taskNo}
 	</update>
 	
 	<!-- 유저 삭제 -->
-	<delete id="deleteTask" parameterType="Integer">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM task
-		WHERE task.task_no = #{taskNo}
+		WHERE task_no = #{taskNo}
 	</delete>
 	
+	<!-- 특정 할일 1개 출력-->
+	<select id="selectByTaskNo" parameterType="Integer" resultMap="taskMap">
+		SELECT t.task_no, t.title, t.content, t.startdate, t.enddate, t.state, c.category_no, c.name
+		FROM task t
+		JOIN category c
+		ON t.category_no = c.category_no 
+		WHERE t.task_no = #{taskNo}
+	</select>
+	
 	<!-- 특정유저 할일 전체 출력-->
-	<select id="selectByUserNo" parameterType="Integer" resultType="com.my.todoList.task.Task">
+	<select id="selectByUserNo" parameterType="Integer" resultMap="taskMap">
 		SELECT t.task_no, t.title, t.content, t.startdate, t.enddate, t.state, u.user_no, c.category_no, c.name
 		FROM task t
 		JOIN users u
 		ON t.user_no = u.user_no
 		JOIN category c
 		ON t.category_no = c.category_no
-		WHERE u.user_no=#{userNo};
+		WHERE u.user_no=#{userNo}
 	</select>
-	
-	<!-- 특정 할일 1개 출력-->
-	<select id="selectByTaskNo" parameterType="Integer" resultType="com.my.todoList.task.Task">
-		SELECT t.task_no, t.title, t.content, t.startdate, t.enddate, t.state, c.category_no, c.name
-		FROM task t
-		JOIN category c
-		ON t.category_no = c.category_no 
-		WHERE t.task_no = #{categoryNo};
-	</select>
-	
 	
 </mapper>

@@ -3,15 +3,17 @@ package com.my.todoList.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.my.todoList.category.mapper.CategoryMapper;
+
 @Repository
 public class CategoryDaoImpl implements CategoryDao{
 	
 	@Autowired
-	private CategoryDao categoryDao;
+	private CategoryMapper categoryMapper;
 	
 	@Override
 	public Integer insert(Category category) throws Exception {
-		return categoryDao.insert(category);
+		return categoryMapper.insert(category);
 	}
 
 }

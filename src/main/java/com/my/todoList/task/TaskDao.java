@@ -10,7 +10,7 @@ public interface TaskDao {
 	//할일 수정
 	public Integer update(Task task) throws Exception;
 	//할일 1개 출력
-	public Task selectBytaskNo(Integer taskNo) throws Exception;
+	public Task selectByTaskNo(Integer taskNo) throws Exception;
 	//특정 회원할일 출력
 	public List<Task> selectByUserNo(Integer userNo) throws Exception;
 }
