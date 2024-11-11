@@ -16,12 +16,12 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public int insert(Users user) throws Exception {
+	public Integer insert(Users user) throws Exception {
 		return userMapper.insert(user);
 	}
 
 	@Override
-	public int update(Users user) throws Exception {
+	public Integer update(Users user) throws Exception {
 		return userMapper.update(user);
 	}
 
@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public int delete(Integer UserNo) throws Exception {
+	public Integer delete(Integer UserNo) throws Exception {
 		return userMapper.delete(UserNo);
 	}
 

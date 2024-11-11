@@ -25,7 +25,7 @@ public class userService {
 	}
 	
 	/*특정회원 출력*/
-	public Users selecUserByNo(Integer userNo) throws Exception {
+	public Users findUserByUserNo(Integer userNo) throws Exception {
 		return userDao.select(userNo);
 	}
 	
