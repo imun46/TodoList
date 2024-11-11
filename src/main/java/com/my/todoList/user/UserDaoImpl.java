@@ -26,8 +26,8 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public Users select(Integer userNo) throws Exception {
-		return userMapper.select(userNo);
+	public Users selectUserByNo(Integer userNo) throws Exception {
+		return userMapper.selectUserByNo(userNo);
 	}
 
 	@Override
@@ -35,4 +35,9 @@ public class UserDaoImpl implements UserDao{
 		return userMapper.delete(UserNo);
 	}
 
+	@Override
+	public Users selectUserById(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

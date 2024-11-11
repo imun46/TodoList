@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class userService {
+public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
@@ -26,7 +26,20 @@ public class userService {
 	
 	/*특정회원 출력*/
 	public Users findUserByUserNo(Integer userNo) throws Exception {
-		return userDao.select(userNo);
+		return userDao.selectUserByNo(userNo);
 	}
 	
+	/*로그인 유저 정보*/
+	public Users loginUser(String id, String password) throws Exception{
+		
+		Users loginUser = userDao.selectUserById(id);
+		
+		if(loginUser == null) {
+			return null;
+		}
+		
+		
+		
+		return userDao.selectUserById(id);
+	}
 }

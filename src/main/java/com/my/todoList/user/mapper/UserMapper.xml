@@ -13,7 +13,7 @@
 	</resultMap>
 
 	<!-- 유저등록 -->
-	<insert id="insertUser" parameterType="com.my.todoList.user.Users">
+	<insert id="insert" parameterType="com.my.todoList.user.Users">
 		<selectKey resultType="Integer" keyProperty="userNo" order="BEFORE">
 			SELECT users_user_no_seq.nextval FROM DUAL;
 		</selectKey>
@@ -22,13 +22,13 @@
 	</insert>
 	
 	<!-- 유저 수정 -->
-	<update id="updateUser" parameterType="com.my.todoList.user.Users">
+	<update id="update" parameterType="com.my.todoList.user.Users">
 		UPDATE users u
 		SET u.user_id = #{id}, u.password = #{password}, u.email = #{email})
 	</update>
 	
 	<!-- 유저 삭제 -->
-	<delete id="deleteUser" parameterType="Integer">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM users
 		WHERE users.user_no = #{userNo}
 	</delete>
@@ -38,6 +38,14 @@
 		SELECT u.user_no, u.id, u.password, u.email 
 			FROM users u 
 			JOIN task t
+			ON 	 u.user_no = t.user_no
 			WHERE u.user_no = #{userNo};
+	</select>
+	
+		<!-- 유저 아이디로 회원정보 출력 -->
+	<select id="selectUserById" parameterType="String" resultType="com.my.todoList.user.Users">
+		SELECT u.user_no, u.id, u.password, u.email 
+			FROM users u 
+			WHERE u.id = #{Id};
 	</select>
 </mapper>
