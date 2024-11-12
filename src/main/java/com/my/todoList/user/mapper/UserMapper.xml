@@ -7,10 +7,16 @@
 		<result column="password" property="password"/>
 		<result column="email" property="email"/>
 		
+		 <!-- userrole 컬렉션 매핑 -->
+		<association property="userrole" javaType="com.my.todoList.role.UserRole"
+		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap"></association>
+			
 		 <!-- Task 컬렉션 매핑 -->
 		<collection property="taskList" javaType="java.util.List"
 		ofType="com.my.todoList.task.Task"
 		resultMap="com.my.todoList.task.mapper.TaskMapper.taskMap"/>
+		
+		
 	</resultMap>
 
 	<!-- 유저등록 -->
@@ -37,8 +43,12 @@
 	
 	<!-- 특정유저 회원정보 출력 -->
 	<select id="selectUserByNo" parameterType="Integer" resultMap="userMap">
-		SELECT u.user_no, u.id, u.password, u.email 
+		SELECT u.user_no, u.id, u.password, u.email, r.name
 			FROM users u 
+            JOIN user_roles ur
+            ON u.user_no = ur. user_no
+            JOIN roles r
+            ON ur.role_no = r.role_no
 			WHERE u.user_no = #{userNo}
 	</select>
 	

@@ -38,6 +38,7 @@ class userServiceTest {
 		System.out.println(userService.deleteUser(3));
 	}
 
+	
 	@Test
 	void testFindUserByUserNo() throws Exception {
 		System.out.println(userService.findUserByUserNo(2));

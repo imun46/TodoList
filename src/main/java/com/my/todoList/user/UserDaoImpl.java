@@ -1,6 +1,10 @@
 package com.my.todoList.user;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import com.my.todoList.user.mapper.UserMapper;
@@ -25,19 +29,19 @@ public class UserDaoImpl implements UserDao{
 		return userMapper.update(user);
 	}
 
+	/* UserDetails 구현체 */
+	@Override
+	public Integer delete(Integer UserNo) throws Exception {
+		return userMapper.delete(UserNo);
+	}
 	@Override
 	public Users selectUserByNo(Integer userNo) throws Exception {
 		return userMapper.selectUserByNo(userNo);
 	}
 
 	@Override
-	public Integer delete(Integer UserNo) throws Exception {
-		return userMapper.delete(UserNo);
-	}
-
-	@Override
 	public Users selectUserById(String id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectUserById(id);
 	}
+	
 }

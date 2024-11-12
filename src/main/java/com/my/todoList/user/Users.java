@@ -3,6 +3,8 @@ package com.my.todoList.user;
 import java.util.List;
 
 import com.my.todoList.category.Category;
+import com.my.todoList.role.Roles;
+import com.my.todoList.role.UserRole;
 import com.my.todoList.task.Task;
 
 import lombok.AllArgsConstructor;
@@ -19,5 +21,6 @@ public class Users {
 	private String id;
 	private String password;
 	private String email;
+	private UserRole userrole;
 	private List<Task> taskList;
 }

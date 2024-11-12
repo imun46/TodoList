@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 메인화면 </title>
+    <style>
+	</style>
+	</head>
+	<body>
+		<h1>환영합니다</h1>
+		<!-- 로그인되지 않은 상태 -->
+		<th:block th:if="${sUserId == null}">
+		    <h2>로그인을 해주세요</h2>
+		    <a href="login">로그인</a>
+		    <a href="signup">회원가입</a>
+		</th:block>		
+		
+		<!-- 로그인된 상태 -->
+		<th:block th:if="${sUserId != null}">
+		    <h2>로그인성공!!!</h2>
+		    <a href="logout_action">로그아웃</a>
+		</th:block>
+	</body>
+</html>
