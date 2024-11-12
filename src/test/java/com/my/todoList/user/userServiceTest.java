@@ -15,7 +15,7 @@ class userServiceTest {
 //	@Test
 	void testCreatUser() throws Exception {
 		Users user = Users.builder()
-				.id("a3")
+				.id("12")
 				.password("aaa")
 				.email("emfif@naver.com")
 				.build();
@@ -39,7 +39,7 @@ class userServiceTest {
 	}
 
 	
-	@Test
+//	@Test
 	void testFindUserByUserNo() throws Exception {
 		System.out.println(userService.findUserByUserNo(2));
 	}

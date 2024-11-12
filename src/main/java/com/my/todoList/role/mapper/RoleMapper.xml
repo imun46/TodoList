@@ -5,11 +5,19 @@
 		<id column="role_no" property="roleNo"/>
 		<result column="name" property="name"/>
 	</resultMap>
-	<resultMap id="userRoleMap" type="com.my.todoList.role.UserRole">
-		<id column="userrole_no" property="userroleNo"/>
+	
+	<resultMap id="userRoleMap" type="com.my.todoList.role.UserRoles">
+		<id column="user_role_no" property="userRoleNo"/>
 		<association property="role" javaType="com.my.todoList.role.Roles"
-		resultMap="com.my.todoList.role.mapper.RoleMapper.roleMapper"/>
-		<association property="user" javaType="com.my.todoList.user.Users"
-		resultMap="com.my.todoList.user.mapper.UserMapper.userMap"/>
+		resultMap="roleMap"></association>
 	</resultMap>
+	
+	
+	<!-- 권한찾기 -->
+	<select id="selectRoleByNo" parameterType="Integer" resultMap="roleMap">
+		SELECT roles
+		FROM roles
+		WHERE roles_no = #{roleNo}
+	</select>
 </mapper>
+

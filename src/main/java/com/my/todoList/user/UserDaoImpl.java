@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
+import com.my.todoList.role.UserRoles;
 import com.my.todoList.user.mapper.UserMapper;
 
 @Repository
@@ -21,7 +22,11 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public Integer insert(Users user) throws Exception {
-		return userMapper.insert(user);
+		int rowCount = userMapper.insert(user);
+		for(UserRoles userRole: user.getUserRoles()) {
+			userMapper.insertUserRole(userRole);
+		}
+ 		return rowCount;
 	}
 
 	@Override

@@ -6,17 +6,17 @@
 		<result column="id" property="id"/>
 		<result column="password" property="password"/>
 		<result column="email" property="email"/>
-		
-		 <!-- userrole 컬렉션 매핑 -->
-		<association property="userrole" javaType="com.my.todoList.role.UserRole"
-		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap"></association>
-			
+		 
 		 <!-- Task 컬렉션 매핑 -->
-		<collection property="taskList" javaType="java.util.List"
+		<collection property="taskList" javaType="java.util.List" 
 		ofType="com.my.todoList.task.Task"
 		resultMap="com.my.todoList.task.mapper.TaskMapper.taskMap"/>
 		
-		
+		 <!-- userRole 컬렉션 매핑 -->
+		<collection property="userRoles" javaType="java.util.List"
+		ofType="com.my.todoList.role.Roles"
+		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap"></collection>
+			
 	</resultMap>
 
 	<!-- 유저등록 -->
@@ -24,8 +24,17 @@
 		<selectKey resultType="Integer" keyProperty="userNo" order="BEFORE">
 			SELECT users_user_no_seq.nextval FROM DUAL
 		</selectKey>
-		INSERT INTO users
+		INSERT INTO users (user_no, id, password, email)
 		VALUES(#{userNo}, #{id}, #{password}, #{email})
+	</insert>
+	
+	<!-- 유저권한등록 -->
+	<insert id="insertUserRole" parameterType="com.my.todoList.role.UserRoles">
+		<selectKey resultType="Integer" keyProperty="userRoleNo" order="BEFORE">
+			SELECT USER_ROLES_user_role_no_SEQ.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO user_roles (user_role_no, user_no, role_no)
+		VALUES(#{userRoleNo}, users_user_no_seq.currval, 2)
 	</insert>
 	
 	<!-- 유저 수정 -->
@@ -46,9 +55,9 @@
 		SELECT u.user_no, u.id, u.password, u.email, r.name
 			FROM users u 
             JOIN user_roles ur
-            ON u.user_no = ur. user_no
+            ON ur.user_no = u.user_no
             JOIN roles r
-            ON ur.role_no = r.role_no
+            ON r.role_no = ur.role_no
 			WHERE u.user_no = #{userNo}
 	</select>
 	

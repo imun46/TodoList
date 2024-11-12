@@ -1,5 +1,8 @@
 package com.my.todoList.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,18 +10,29 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.my.todoList.role.Roles;
+import com.my.todoList.role.UserRoles;
+
 @Service
 public class UserService implements UserDetailsService{
 	@Autowired
 	private UserDao userDao;
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	/*회원가입*/
 	public Integer creatUser(Users user) throws Exception {
+		List<UserRoles> userRoles = new ArrayList<>();
+		userRoles.add(UserRoles.builder()
+				.user(user)
+				.role(Roles.builder().roleNo(2).build())
+				.build());
+		
 		Users newUser = Users.builder()
 				.id(user.getId())
 				.password(passwordEncoder.encode(user.getPassword())) //비밀번호 암호화
 				.email(user.getEmail())
+				.userRoles(userRoles)
 				.build();
 		
 		return userDao.insert(newUser);

@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Roles {
-	private Integer rolesNo;
+	private Integer roleNo;
 	private String name;
 }

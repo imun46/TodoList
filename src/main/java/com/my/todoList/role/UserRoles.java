@@ -1,5 +1,7 @@
 package com.my.todoList.role;
 
+import javax.management.relation.Role;
+
 import com.my.todoList.user.Users;
 
 import lombok.AllArgsConstructor;
@@ -8,11 +10,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class UserRole {
-	private Integer userroleNo;
-	private Roles role;
+
+public class UserRoles {
+	private Integer userRoleNo;
 	private Users user;
+	private Roles role;
 }
