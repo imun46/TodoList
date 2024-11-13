@@ -12,10 +12,10 @@ class userServiceTest {
 	@Autowired
 	private UserService userService;
 	
-//	@Test
+	@Test
 	void testCreatUser() throws Exception {
 		Users user = Users.builder()
-				.id("12")
+				.id("hhh")
 				.password("aaa")
 				.email("emfif@naver.com")
 				.build();

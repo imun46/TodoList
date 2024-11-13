@@ -14,7 +14,7 @@ import com.my.todoList.role.Roles;
 import com.my.todoList.role.UserRoles;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService{
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService{
 				.email(user.getEmail())
 				.userRoles(userRoles)
 				.build();
-		
+		System.out.println(newUser);
 		return userDao.insert(newUser);
 	}
 	
@@ -68,12 +68,5 @@ public class UserService implements UserDetailsService{
 		}
 		
 		return userDao.selectUserById(id);
-	}
-
-	/* 로그인 시큐리티 관련 메소드*/
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
