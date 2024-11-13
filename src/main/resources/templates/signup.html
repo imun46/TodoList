@@ -8,7 +8,7 @@
 <script type="text/javascript">
     function signUp() {
         // 폼의 각 필드를 확인합니다.
-    /*     if (document.signupForm.id.value == "") {
+  		if (document.signupForm.id.value == "") {
             alert("아이디를 입력해주세요");
             signupForm.id.focus();
             return false;  // 여기서 false를 반환하면 폼이 제출되지 않음
@@ -28,9 +28,7 @@
             alert("이메일을 입력해주세요");
             signupForm.email.focus();
             return false;
-        } */
-		console.log("aaaaaaaaaaaaaaa");
-        // action을 절대 경로로 수정
+        } 
 		document.signupForm.action = "/signup_action"; 
         document.signupForm.method = "POST";	
         document.signupForm.submit(); 

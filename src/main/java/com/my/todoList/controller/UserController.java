@@ -47,10 +47,5 @@ public class UserController {
 		System.out.println("로그인폼");
 		return "login";
 	}
-//	
-//	@PostMapping("/login_action")
-//	public String loginAction() {
-//	    return "redirect:/home";
-//	}
 	
 }

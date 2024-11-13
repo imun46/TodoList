@@ -10,14 +10,14 @@
 	<body>
 		<h1>환영합니다</h1>
 		<!-- 로그인되지 않은 상태 -->
-		<th:block th:if="${sUserId == null}">
+		<th:block th:if="${SPRING_SECURITY_CONTEXT== null}">
 		    <h2>로그인을 해주세요</h2>
 		    <a href="login">로그인</a>
 		    <a href="signup">회원가입</a>
 		</th:block>		
 		
 		<!-- 로그인된 상태 -->
-		<th:block th:if="${sUserId != null}">
+		<th:block th:if="${SPRING_SECURITY_CONTEXT != null}">
 		    <h2>로그인성공!!!</h2>
 		    <a href="logout_action">로그아웃</a>
 		</th:block>

@@ -6,6 +6,25 @@
     <title> 메인화면 </title>
     <style>
 	</style>
+	<script type="text/javascript">
+	function login(){
+	    // 폼의 각 필드를 확인합니다.
+		if (document.loginForm.id.value == "") {
+	        alert("아이디를 입력해주세요");
+	        loginForm.id.focus();
+	        return false; 
+    	}
+		if(document.loginForm.password.value == ""){
+			alert("비밀번호를 입력해주세요")
+			loginForm.password.focus();
+			return false;
+		}
+		
+		document.loginForm.action="/login_action";
+		document.loginForm.method="POST"
+		document.loginForm.submit();
+	}
+	</script>
 	</head>
 	<body>
 	 	<div class="menu">
@@ -23,7 +42,7 @@
 	                <input type="password" name="password" id="password">
 	            </div>
 				<div>
-		            <button>로그인</button>
+		            <button onclick="login();">로그인</button>
 		            <a href="signup">회원가입</a>
 				</div>		            
 	        </form>
