@@ -10,7 +10,6 @@ public interface UserDao {
 	public Users selectUserByNo(Integer userNo) throws Exception;
 	//회원탈퇴
 	public Integer delete(Integer UserNo) throws Exception;
-	
-	//아이디로 객체 찾기
+	//아이디로 유저 찾기
 	public Users selectUserById(String id) throws Exception;
 }

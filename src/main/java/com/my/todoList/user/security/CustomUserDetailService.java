@@ -20,11 +20,13 @@ public class CustomUserDetailService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-		Users user;
+		System.out.println("CustomUserDetailService 확인 userId" + userId);
 		try {
-			user = userDao.selectUserById(userId);
+			Users user = userDao.selectUserById(userId);
+			System.out.println("CustomUserDetailService 확인!!" + user);
 			return new CustomUserDetails(user);
 		} catch (Exception e) {
+			System.out.println("실패 ㅜㅜㅜ");
 			throw new UsernameNotFoundException("userID" + userId + " not found");
 		}
 	}

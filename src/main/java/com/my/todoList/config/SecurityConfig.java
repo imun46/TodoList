@@ -32,8 +32,7 @@ public class SecurityConfig {
 	            //로그인 설정
 	            .formLogin(formLogin -> formLogin
 	            		.loginPage("/login")  // 로그인 페이지 경로
-	            		.loginProcessingUrl("/login_action")  // 로그인 처리 URL
-	            		.usernameParameter("userId")
+	            		.usernameParameter("id")
 	            		.passwordParameter("password")
 	            		.defaultSuccessUrl("/home", true)  // 로그인 후 이동할 페이지
 	            		)
