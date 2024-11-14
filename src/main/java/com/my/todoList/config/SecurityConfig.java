@@ -26,7 +26,7 @@ public class SecurityConfig {
 		        .csrf(csrf -> csrf.disable())
 	        	//요청에 대한 권한 설정, 인증 인가가필요한 페이지 설정
 	            .authorizeHttpRequests(authorize -> authorize
-	                .requestMatchers("/signup","/signup_action","/home","/login","login_action").permitAll()  // 회원가입 페이지는 인증 안함
+	                .requestMatchers("/signup","/signup_action","/home","/login").permitAll()  // 회원가입 페이지는 인증 안함
 	                .requestMatchers("/admin/**").hasRole("ADMIN")  // 관리자 권한 필요
 	                .anyRequest().authenticated()) // 나머지 모든 요청은 인증된 사용자만 접근
 	            //로그인 설정
