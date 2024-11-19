@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	private UserDetailsService userDetailsService;
@@ -17,18 +20,18 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		
-		//로그인
+		//로그인 정보가져오기
 		String userId = authentication.getName();
 		String password = (String)authentication.getCredentials();
 		
 		//DB에서 로그인 정보와 일치하는 사용자 정보를 찾아 DTO에 담아
 		UserDetails userDetails = userDetailsService.loadUserByUsername(userId);
-
-        //시큐리티에서 지원하는 암호화 객체를 통해 입력한 비밀번호와 DB의 비밀번호가 일치하는지 판단
-        if (!passwordEncoder.matches(password, userDetails.getPassword())){
-        	//일치하지 않는 경우 예외처리한다
-            throw new BadCredentialsException("사용자 정보가 일치하지 않습니다");
-        }
+		
+		// 비밀번호 검증
+	    if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+	        throw new BadCredentialsException("Invalid username or password");
+	    }
+	    	
         //일치하는 사용자가 있을 경우 인증 토큰을 발급한다
         return new UsernamePasswordAuthenticationToken(userDetails,password,userDetails.getAuthorities());
     }

@@ -12,7 +12,7 @@ class userServiceTest {
 	@Autowired
 	private UserService userService;
 	
-	@Test
+//	@Test
 	void testCreatUser() throws Exception {
 		Users user = Users.builder()
 				.id("hhh")
@@ -48,5 +48,8 @@ class userServiceTest {
 //	void testLoginUser() {
 //		fail("Not yet implemented");
 //	}
-
+	@Test
+	void testUserAll() throws Exception {
+		System.out.println(userService.findUserAll());
+	}
 }

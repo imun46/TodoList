@@ -14,8 +14,8 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+/* 사용자 정보를 가져올때 이용하는 서비스*/
 public class CustomUserDetailService implements UserDetailsService{
-	@Autowired
 	private UserDao userDao;
 
 	@Override

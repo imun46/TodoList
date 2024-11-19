@@ -1,5 +1,7 @@
 package com.my.todoList.user.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.my.todoList.role.UserRoles;
@@ -15,5 +17,6 @@ public interface UserMapper {
 	public int delete(Integer UserNo) throws Exception;
 	public Users selectUserByNo(Integer userNo) throws Exception;
 	public Users selectUserById(String id) throws Exception;
+	public List<Users> selectUserAll() throws Exception;
 	
 }

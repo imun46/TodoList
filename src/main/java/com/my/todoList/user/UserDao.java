@@ -1,5 +1,7 @@
 package com.my.todoList.user;
 
+import java.util.List;
+
 public interface UserDao {
 	
 	//회원가입
@@ -13,4 +15,7 @@ public interface UserDao {
 	
 	//아이디로 객체 찾기
 	public Users selectUserById(String id) throws Exception;
+	
+	//유저 전체 출력
+	public List<Users> selectUserAll() throws Exception;
 }

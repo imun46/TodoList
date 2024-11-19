@@ -67,4 +67,9 @@
 			FROM users u 
 			WHERE u.id = #{id}
 	</select>
+	
+	<select id="selectUserAll" resultMap="userMap">
+		SELECT user_no, id, email
+		FROM users
+	</select>
 </mapper>

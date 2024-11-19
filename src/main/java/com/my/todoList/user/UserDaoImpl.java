@@ -1,10 +1,8 @@
 package com.my.todoList.user;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import com.my.todoList.role.UserRoles;
@@ -32,6 +30,10 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public Integer update(Users user) throws Exception {
 		return userMapper.update(user);
+	}
+	
+	public List<Users> selectUserAll() throws Exception{
+		return userMapper.selectUserAll();
 	}
 
 	/* UserDetails 구현체 */

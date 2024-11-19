@@ -58,6 +58,11 @@ public class UserService{
 		return userDao.selectUserById(id);
 	}
 	
+	/* 유저 전체 출력 */
+	public List<Users> findUserAll() throws Exception {
+		return userDao.selectUserAll();
+	}
+	
 	/*로그인 유저 정보*/
 	public Users loginUser(String id, String password) throws Exception{
 		

@@ -1,6 +1,6 @@
 package com.my.todoList.role;
 
-import com.my.todoList.user.Users;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

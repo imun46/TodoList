@@ -19,17 +19,17 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class CustomUserDetails implements UserDetails{
 	
-	@Autowired
-	private Users user;
+	private final Users user;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 사용자가 가진 권한을 반환. 예: "ROLE_USER", "ROLE_ADMIN"
 	        ArrayList<GrantedAuthority> roleList = new ArrayList<GrantedAuthority>();
-	        roleList.add(new SimpleGrantedAuthority(user.getUserRoles().toString()));
+	        for (UserRoles role : user.getUserRoles()) {
+	            roleList.add(new SimpleGrantedAuthority(role.getRole().getName()));
+	        }
 	        return roleList;
 	}
 	
@@ -44,5 +44,21 @@ public class CustomUserDetails implements UserDetails{
 	public String getUsername() {
 		return user.getId();
 	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+	    return true;  // 계정 만료 여부 (실제 로직에 따라 처리)
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+	    return true;  // 계정 잠금 여부 (실제 로직에 따라 처리)
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+	    return true;  // 자격 증명 만료 여부 (실제 로직에 따라 처리)
+	}
+
 	
 }

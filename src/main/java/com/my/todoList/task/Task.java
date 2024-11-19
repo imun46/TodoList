@@ -2,6 +2,7 @@ package com.my.todoList.task;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.my.todoList.category.Category;
 import com.my.todoList.user.Users;
 
@@ -9,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Builder
 @NoArgsConstructor
