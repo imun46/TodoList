@@ -1,6 +1,8 @@
 package com.my.todoList.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,8 @@ public class UserController {
 	
 	/*메인페이지*/
 	@GetMapping("/home")
-	public String main() {
+	public String main(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+		model.addAttribute("sUserId", userDetails.getUsername());
 		return "home";
 	}
 	

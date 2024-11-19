@@ -26,11 +26,9 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 사용자가 가진 권한을 반환. 예: "ROLE_USER", "ROLE_ADMIN"
-	        ArrayList<GrantedAuthority> roleList = new ArrayList<GrantedAuthority>();
-	        for (UserRoles role : user.getUserRoles()) {
-	            roleList.add(new SimpleGrantedAuthority(role.getRole().getName()));
-	        }
-	        return roleList;
+	        ArrayList<GrantedAuthority> authoriteis = new ArrayList<>();
+	        authoriteis.add(new SimpleGrantedAuthority("ROLE_USER"));
+	        return authoriteis;
 	}
 	
 	//패스워드 비교를 위한 패스워드 리턴
@@ -60,5 +58,13 @@ public class CustomUserDetails implements UserDetails{
 	    return true;  // 자격 증명 만료 여부 (실제 로직에 따라 처리)
 	}
 
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public String getId() {
+        return user.getId();
+    }
 	
 }
