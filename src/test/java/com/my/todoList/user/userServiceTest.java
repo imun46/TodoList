@@ -26,7 +26,7 @@ class userServiceTest {
 
 //	@Test
 	void testUpdateUser() throws Exception {
-		Users user = Users.builder()
+		UserDto user = UserDto.builder()
 				.userNo(2)
 				.id("changeId")
 				.password("aaa")

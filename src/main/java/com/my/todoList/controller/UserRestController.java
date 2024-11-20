@@ -8,10 +8,12 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,7 @@ import com.my.todoList.user.Users;
 import com.my.todoList.user.dto.UserDto;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
 
@@ -91,8 +94,10 @@ public class UserRestController {
 	}
 	
 	/* 회원 한명 출력 */
-	@GetMapping("/{userNo}")
-	public ResponseEntity<UserDto> userDetail(Integer userNo){
+	@Operation(summary = "회원 상세보기")
+	@Parameter(name="user_no", description = "유저 번호")
+	@GetMapping(value="/{user_no}", produces="application/json;charset=UTF-8")
+	public ResponseEntity<UserDto> userDetail(@PathVariable(value="user_no") Integer userNo){
 		try {
 			Users user = userService.findUserByUserNo(userNo);
 			UserDto resultUser = UserDto.toUserDto(user);
@@ -104,9 +109,21 @@ public class UserRestController {
 	}
 	
 	/* 회원 정보 수정 */
+	@Operation(summary = "회원 정보 수정")
+	@Parameter(name="user_no", description = "유저 번호")
+	@PutMapping("/{user_no}")
+	public ResponseEntity<UserDto> updateUser(@PathVariable(value="user_no") Integer userNo,UserDto userDto){
+		try {
+			userService.updateUser(userDto);
+			return ResponseEntity.status(HttpStatus.OK).body(userDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
 	
 	/* 회원 전체 출력 */
-	@Operation(description = "유저리스트")
+	@Operation(summary = "회원 전체리스트", description = "회원 전체리스트")
 	@GetMapping("/list")
 	public ResponseEntity<List<Users>> userList(){
 		try {

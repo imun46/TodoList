@@ -33,7 +33,7 @@ public class Users {
 		return this;
 	}
 	
-	public Users toUsers(UserDto userDto) {
+	public static Users toUsers(UserDto userDto) {
 		return Users.builder()
 				.userNo(userDto.getUserNo())
 				.id(userDto.getId())

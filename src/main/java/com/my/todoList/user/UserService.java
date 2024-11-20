@@ -37,7 +37,9 @@ public class UserService{
 	}
 	
 	/*유저 정보 수정*/
-	public Integer updateUser(Users user) throws Exception {
+	public Integer updateUser(UserDto userDto) throws Exception {
+		Users user = Users.toUsers(userDto);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		return userDao.update(user);
 	}
 	
