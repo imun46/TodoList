@@ -22,6 +22,7 @@ public class Task {
 	private Date startDate;
 	private Date endDate;
 	private String state;
+	
 	private Category category;
 	private Users users;
 	
@@ -35,4 +36,5 @@ public class Task {
 	            ", users=" + (users != null ? users.getUserNo() : "N/A") +  // user의 ID만 출력
 	            '}';
 	}
+	
 }

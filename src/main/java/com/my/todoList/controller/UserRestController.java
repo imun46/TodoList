@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.my.todoList.user.UserService;
 import com.my.todoList.user.Users;
+import com.my.todoList.user.dto.userSignupDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,25 +50,27 @@ public class UserRestController {
 //	}
 	
 	@PostMapping("/signup")
-	public Map signup(@RequestBody Users user){
+	public Map signup(@RequestBody userSignupDto user){
+		
 		Map resultMap = new HashMap<>();
 		int status = 1;
 		String msg = "";
 		List data = new ArrayList<>();
+		
 		try {
 			Integer signupSuccess = userService.creatUser(user);
 			status = 1;
 			msg = "가입 성공";
 			data.add(user);
 		} catch (Exception e) {
-			e.printStackTrace();
 			status = 2;
 			msg = "가입 실패";
+			e.printStackTrace();
 		}
 		resultMap.put("status", status);
 		resultMap.put("msg", msg);
 		resultMap.put("data", data);
-		
+	     
 		return resultMap;
 	}
 	

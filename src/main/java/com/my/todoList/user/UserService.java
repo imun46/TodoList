@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.my.todoList.role.Roles;
 import com.my.todoList.role.UserRoles;
+import com.my.todoList.user.dto.userSignupDto;
 
 @Service
 public class UserService{
@@ -21,20 +22,17 @@ public class UserService{
 	private PasswordEncoder passwordEncoder;
 	
 	/*회원가입*/
-	public Integer creatUser(Users user) throws Exception {
+	public Integer creatUser(userSignupDto user) throws Exception {
 		List<UserRoles> userRoles = new ArrayList<>();
-		userRoles.add(UserRoles.builder()
-				.user(user)
-				.role(Roles.builder().roleNo(2).build())
-				.build());
-		
+		userRoles.add(UserRoles.builder().role(Roles.builder().roleNo(2).build()).build());
+
 		Users newUser = Users.builder()
 				.id(user.getId())
 				.password(passwordEncoder.encode(user.getPassword())) //비밀번호 암호화
 				.email(user.getEmail())
 				.userRoles(userRoles)
 				.build();
-		System.out.println(newUser);
+
 		return userDao.insert(newUser);
 	}
 	

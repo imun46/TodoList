@@ -35,4 +35,14 @@ public class Users {
 		this.password = passwordEncoder.encode(password);
 		return this;
 	}
+	
+	public void addTask(Task task){
+		taskList.add(task);
+		task.setUsers(this);
+	}
+	
+	public void addUserRole(UserRoles userRole){
+		userRoles.add(userRole);
+		userRole.setUser(this);
+	}
 }

@@ -18,4 +18,5 @@ public class UserRoles {
 	private Integer userRoleNo;
 	private Users user;
 	private Roles role;
+	
 }

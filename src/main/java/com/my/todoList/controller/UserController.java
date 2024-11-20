@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.my.todoList.user.UserService;
 import com.my.todoList.user.Users;
+import com.my.todoList.user.dto.userSignupDto;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -35,7 +36,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/signup_action")
-	public String signupAction(@ModelAttribute Users user){
+	public String signupAction(@ModelAttribute userSignupDto user){
 	    try {
 			userService.creatUser(user);
 			return "redirect:/login";    
