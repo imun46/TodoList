@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.my.todoList.user.UserService;
 import com.my.todoList.user.Users;
-import com.my.todoList.user.dto.userSignupDto;
+import com.my.todoList.user.dto.UserDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,13 +31,8 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
-	/*회원가입*/
-//	@GetMapping("/signup")
-//	public String signup() {
-//		return "signup";
-//	}
+	/* 회원가입 */
 	
-	@Operation(description = "회원가입")
 //	@PostMapping("/signup")
 //	public ResponseEntity<String> signup(@RequestBody Users user){
 //			try {
@@ -48,9 +43,9 @@ public class UserRestController {
 //			}
 //			return ResponseEntity.status(HttpStatus.OK).body("가입성공");
 //	}
-	
+	@Operation(description = "회원가입")
 	@PostMapping("/signup")
-	public Map signup(@RequestBody userSignupDto user){
+	public Map signup(@RequestBody UserDto user){
 		
 		Map resultMap = new HashMap<>();
 		int status = 1;
@@ -95,7 +90,22 @@ public class UserRestController {
 	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response); // 401 Unauthorized 상태 코드 반환
 	}
 	
-	/* 유저 전체 출력 */
+	/* 회원 한명 출력 */
+	@GetMapping("/{userNo}")
+	public ResponseEntity<UserDto> userDetail(Integer userNo){
+		try {
+			Users user = userService.findUserByUserNo(userNo);
+			UserDto resultUser = UserDto.toUserDto(user);
+			return ResponseEntity.status(HttpStatus.OK).body(resultUser);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+	
+	/* 회원 정보 수정 */
+	
+	/* 회원 전체 출력 */
 	@Operation(description = "유저리스트")
 	@GetMapping("/list")
 	public ResponseEntity<List<Users>> userList(){

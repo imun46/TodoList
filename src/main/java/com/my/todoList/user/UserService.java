@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.my.todoList.role.Roles;
 import com.my.todoList.role.UserRoles;
-import com.my.todoList.user.dto.userSignupDto;
+import com.my.todoList.user.dto.UserDto;
 
 @Service
 public class UserService{
@@ -22,7 +22,7 @@ public class UserService{
 	private PasswordEncoder passwordEncoder;
 	
 	/*회원가입*/
-	public Integer creatUser(userSignupDto user) throws Exception {
+	public Integer creatUser(UserDto user) throws Exception {
 		List<UserRoles> userRoles = new ArrayList<>();
 		userRoles.add(UserRoles.builder().role(Roles.builder().roleNo(2).build()).build());
 

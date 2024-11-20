@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.my.todoList.user.dto.userSignupDto;
+import com.my.todoList.user.dto.UserDto;
 
 @SpringBootTest
 class userServiceTest {
@@ -16,7 +16,7 @@ class userServiceTest {
 	
 //	@Test
 	void testCreatUser() throws Exception {
-		userSignupDto user = userSignupDto.builder()
+		UserDto user = UserDto.builder()
 				.id("hhh")
 				.password("aaa")
 				.email("emfif@naver.com")

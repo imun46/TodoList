@@ -2,14 +2,11 @@ package com.my.todoList.user;
 
 import java.util.List;
 
-import javax.management.relation.Role;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.my.todoList.category.Category;
-import com.my.todoList.role.Roles;
 import com.my.todoList.role.UserRoles;
 import com.my.todoList.task.Task;
+import com.my.todoList.user.dto.UserDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,6 +32,16 @@ public class Users {
 		this.password = passwordEncoder.encode(password);
 		return this;
 	}
+	
+	public Users toUsers(UserDto userDto) {
+		return Users.builder()
+				.userNo(userDto.getUserNo())
+				.id(userDto.getId())
+				.password(userDto.getPassword())
+				.email(userDto.getEmail())
+				.build();
+	}
+	
 	
 	public void addTask(Task task){
 		taskList.add(task);
