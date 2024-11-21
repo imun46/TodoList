@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.my.todoList.task.dto.TaskDto;
+
 @Service
 public class TaskService {
 	
@@ -12,7 +14,8 @@ public class TaskService {
 	private TaskDao taskDao;
 	
 	/*할일 저장*/
-	public Integer createTask(Task task) throws Exception {
+	public Integer createTask(TaskDto taskDto) throws Exception {
+		Task task = TaskDto.toTask(taskDto);
 		return taskDao.insert(task);
 	}
 	/*할일 삭제*/

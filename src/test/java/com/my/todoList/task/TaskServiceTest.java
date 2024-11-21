@@ -1,15 +1,15 @@
 package com.my.todoList.task;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Date;
 
-import com.my.todoList.category.Category;
-import com.my.todoList.user.Users;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import com.my.todoList.category.Category;
+import com.my.todoList.task.dto.TaskDto;
+import com.my.todoList.user.Users;
 
 @SpringBootTest
 class TaskServiceTest {
@@ -23,13 +23,13 @@ class TaskServiceTest {
 //	@Test
 	void testCreateTask() throws Exception {
 		Date date = new Date();
-		Task task = Task.builder()
+		TaskDto task = TaskDto.builder()
 				.title("똥싸기")
 				.content("아침에 똥싸는게 좋잖아")
 				.startDate(date)
 				.endDate(date)
-				.category(Category.builder().categoryNo(1).build())
-				.users(Users.builder().userNo(2).build())
+				.categoryNo(1)
+				.userNo(2)
 				.build();
 		System.out.println(taskService.createTask(task));
 	}

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.my.todoList.category.Category;
+import com.my.todoList.task.dto.TaskDto;
 import com.my.todoList.user.Users;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +27,18 @@ public class Task {
 	private Category category;
 	private Users users;
 	
+	public static TaskDto toTaskDto(Task task) {
+		return TaskDto.builder()
+				.taskNo(task.getTaskNo())
+				.title(task.getTitle())
+				.content(task.getContent())
+				.startDate(task.getStartDate())
+				.endDate(task.getEndDate())
+				.state(task.getState())
+				.categoryNo(task.category.getCategoryNo())
+				.userNo(task.users.getUserNo())
+				.build();
+	}
 	
 	public String toString() {
 	    return "Task{" +
