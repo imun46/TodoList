@@ -42,15 +42,13 @@ class TaskServiceTest {
 //	@Test
 	void testUpdate() throws Exception {
 		Date date = new Date();
-		Task task = Task.builder()
+		TaskDto task = TaskDto.builder()
 				.taskNo(3)
 				.title("똥싸기")
 				.content("아침에 똥싸는게 좋잖아")
 				.startDate(date)
 				.endDate(date)
 				.state("active")
-				.category(Category.builder().categoryNo(2).build())
-				.users(Users.builder().userNo(2).build())
 				.build();
 		System.out.println(taskService.update(task));
 	}

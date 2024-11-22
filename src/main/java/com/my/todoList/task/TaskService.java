@@ -1,5 +1,6 @@
 package com.my.todoList.task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,24 @@ public class TaskService {
 		return taskDao.delete(taskNo);
 	}
 	/*할일 수정*/
-	public Integer update(Task task) throws Exception{
+	public Integer update(TaskDto taskDto) throws Exception{
+		Task task = TaskDto.toTask(taskDto);
 		return taskDao.update(task);
 	}
 	/*할일 출력 특정 pk 한개*/
-	public Task findTaskByTaskNo(Integer TaskNo) throws Exception{
-		return taskDao.selectByTaskNo(TaskNo);
+	public TaskDto findTaskByTaskNo(Integer TaskNo) throws Exception{
+		Task task = taskDao.selectByTaskNo(TaskNo);
+		return Task.toTaskDto(task); 
 	}
 	
 	/*할일 전체 출력 (특정 유저)*/
-	public List<Task> findTaskByUserNo(Integer UserNo) throws Exception{
-		return taskDao.selectByUserNo(UserNo);
+	public List<TaskDto> findTaskByUserNo(Integer UserNo) throws Exception{
+		List<Task> taskList = taskDao.selectByUserNo(UserNo);
+		List<TaskDto> taskDtoList = new ArrayList<>();
+		for (Task task : taskList) {
+			Task.toTaskDto(task);
+		}
+		return null;
+				
 	}
 }
