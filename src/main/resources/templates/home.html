@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 메인화면 </title>
-    <style>
-	</style>
+    <title> Todo List </title>
+	<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
-		<h1>환영합니다</h1>
-		<!-- 로그인되지 않은 상태 -->
-		<th:block th:if="${sUserId== null}">
-		    <h2>로그인을 해주세요</h2>
-		    <a href="login">로그인</a>
-		    <a href="signup">회원가입</a>
-		</th:block>		
-		
-		<!-- 로그인된 상태 -->
-		<th:block th:if="${sUserId != null}">
-		    <h2>로그인성공!!!</h2>
-		    <a href="logout">로그아웃</a>
-		</th:block>
+		<div class="container">
+			<div class="title">
+				<p>Todo List</p>
+			</div>
+			<form class="loginForm">
+				<input type="text" placeholder="아이디">
+				<input type="text" placeholder="비밀번호">
+				<div class="buttonContainer">
+					<input type="button" value="로그인">
+					<input type="button" value="회원가입" onclick="location.href='signup.html'">
+				</div>
+			</form>
+		</div>
 	</body>
 </html>

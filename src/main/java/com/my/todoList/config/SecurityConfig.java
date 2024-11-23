@@ -43,11 +43,11 @@ public class SecurityConfig {
                 .anyRequest().authenticated()) // 나머지 모든 요청은 인증된 사용자만 접근
             //로그인 설정
             .formLogin(formLogin -> formLogin
-            		.loginPage("/login")  // 로그인 페이지 경로
+            		.loginPage("/home")  // 로그인 페이지 경로
             		.loginProcessingUrl("/login_action")  // 로그인 처리 URL
             		.usernameParameter("id")
             		.passwordParameter("password")
-            		.defaultSuccessUrl("/home", true)  // 로그인 후 이동할 페이지
+            		.defaultSuccessUrl("/task", true)  // 로그인 후 이동할 페이지
             		.failureUrl("/login-error") // 로그인 실패 시 이동할 페이지
             		)
 	        // 로그아웃 설정

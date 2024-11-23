@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 @RestController
-@RequestMapping("/user")
 public class IndexController {
 	
 	/*메인페이지*/

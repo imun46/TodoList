@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<script type="text/javascript">
+    function signUp() {
+        // 폼의 각 필드를 확인합니다.
+  		if (document.signupForm.id.value == "") {
+            document.querySelector('.idError').innerHTML = "아이디를 입력해주세요";
+            signupForm.id.focus();
+            return false;  // 여기서 false를 반환하면 폼이 제출되지 않음
+        }
+        if (document.signupForm.password.value == "") {
+            document.querySelector('.pwError').innerHTML ="비밀번호를 입력해주세요";
+            signupForm.password.focus();
+            return false;
+        }
+        if (document.signupForm.password2.value == "") {
+           document.querySelector('.pwError2').innerHTML ="비밀번호확인을 입력해주세요";
+            signupForm.password2.focus();
+            return false;
+        }else if(document.signupForm.password.value !== document.signupForm.password2.value ){
+            document.querySelector('.pwError2').innerHTML ="비밀번호가 일치하지 않습니다";
+            signupForm.password2.focus();
+            return false;
+        }
+        if (document.signupForm.email.value == "") {
+            document.querySelector('.emailError').innerHTML ="이메일을 입력해주세요";
+            signupForm.email.focus();
+            return false;
+        } 
+
+
+        
+		document.signupForm.action = "/signup_action"; 
+        document.signupForm.method = "POST";	
+        document.signupForm.submit(); 
+    }
+
+
+
+
+</script>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <p>Todo List</p>
+        </div>
+        <form name="signupForm" id = "signupForm" class="signupForm">
+            <div>
+                <input type="text" name="id" id="id" placeholder="아이디" onclick="document.querySelector('.idError').innerHTML = '';">
+                <p class="idError"></p>
+            </div>
+            <div>
+                <input type="password" name="password" id="password" placeholder="비밀번호" onclick="document.querySelector('.pwError').innerHTML =''">
+                <p class="pwError"></p>
+            </div>
+            <div>
+                <input type="password" name="password2" id="password2" placeholder="비밀번호 확인" onclick="document.querySelector('.pwError2').innerHTML =''">
+                <p class="pwError2"></p>
+            </div>
+            <div>
+                <input type="text" name="email" id="email" placeholder="이메일" onclick="document.querySelector('.emailError').innerHTML =''">
+                <p class="emailError"></p>
+            </div>
+            <div class="buttonContainer">
+                <input type="button" value="회원 가입" onclick="signUp();">
+            </div>
+        </form>
+    </div>
+</body>
+
+    </div>
+</body>
+</html>

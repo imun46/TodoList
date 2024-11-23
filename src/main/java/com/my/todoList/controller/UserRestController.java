@@ -73,12 +73,6 @@ public class UserRestController {
 		return resultMap;
 	}
 	
-	/*로그인*/
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
 	@Operation(description = "로그인 실패")
 	@GetMapping("/login-error")
 	public ResponseEntity<Map<String,String>> loginError(HttpServletRequest request) {

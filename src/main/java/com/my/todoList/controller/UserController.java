@@ -22,12 +22,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	/*메인페이지*/
+	/*메인페이지
 	@GetMapping("/home")
 	public String main(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 		model.addAttribute("sUserId", userDetails.getUsername());
 		return "home";
-	}
+	}*/
 	
 	/*회원가입*/
 	@GetMapping("/signup")
