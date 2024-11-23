@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Todo List </title>
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="./css/index.css" type="text/css">
 	</head>
+	<script type="text/javascript">
+		function login(){
+			document.loginForm.action = "login";
+			document.loginForm.method = "POST";
+			document.loginForm.submit();
+		}
+	</script>
 	<body>
 		<div class="container">
 			<div class="title">
 				<p>Todo List</p>
 			</div>
-			<form class="loginForm">
-				<input type="text" placeholder="아이디">
-				<input type="text" placeholder="비밀번호">
+			<form  name="loginForm" class="loginForm">
+				<input type="text" name="id" class="id" placeholder="아이디">
+				<input type="password" name="password" class="password" placeholder="비밀번호">
 				<div class="buttonContainer">
-					<input type="button" value="로그인">
-					<input type="button" value="회원가입" onclick="location.href='signup.html'">
+					<input type="button" value="로그인" onclick="login()">
+					<input type="button" value="회원가입" onclick="location.href='user/signup'">
 				</div>
 			</form>
 		</div>

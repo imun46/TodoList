@@ -3,27 +3,30 @@ package com.my.todoList.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 import com.my.todoList.user.security.CustomUserDetailService;
 
 @Configuration
 public class SecurityConfig {
-	
-	 private final CustomUserDetailService userDetailService;
-	 
-	 public SecurityConfig(CustomUserDetailService userDetailService) {
-	        this.userDetailService = userDetailService;
-	    }
-	 
+		
+	@Autowired
+	private CustomUserDetailService userDetailService;
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailService)
+                .passwordEncoder(passwordEncoder())  // 비밀번호 인코더 설정
+                .and()
+                .build();
+    }
+	    
     // 비밀번호 암호화
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,7 +47,7 @@ public class SecurityConfig {
             //로그인 설정
             .formLogin(formLogin -> formLogin
             		.loginPage("/home")  // 로그인 페이지 경로
-            		.loginProcessingUrl("/login_action")  // 로그인 처리 URL
+            		.loginProcessingUrl("/login")  // 로그인 처리 URL
             		.usernameParameter("id")
             		.passwordParameter("password")
             		.defaultSuccessUrl("/task", true)  // 로그인 후 이동할 페이지
@@ -57,11 +60,6 @@ public class SecurityConfig {
                 .invalidateHttpSession(true)  // 세션 무효화
             );
         return http.build();
-    }
-    
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // BCryptPasswordEncoder를 사용하여 암호화된 비밀번호를 비교
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
     }
 	
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
 </head>
 <script type="text/javascript">
     function signUp() {
@@ -36,7 +36,7 @@
 
 
         
-		document.signupForm.action = "/signup_action"; 
+		document.signupForm.action = "signup"; 
         document.signupForm.method = "POST";	
         document.signupForm.submit(); 
     }
@@ -72,9 +72,6 @@
                 <input type="button" value="회원 가입" onclick="signUp();">
             </div>
         </form>
-    </div>
-</body>
-
     </div>
 </body>
 </html>

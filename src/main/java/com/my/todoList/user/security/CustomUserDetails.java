@@ -2,26 +2,23 @@ package com.my.todoList.user.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-
-import javax.management.relation.Role;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.my.todoList.role.UserRoles;
 import com.my.todoList.user.Users;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class CustomUserDetails implements UserDetails{
 	
-	private final Users user;
+	@Autowired
+	private Users user;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -34,6 +31,7 @@ public class CustomUserDetails implements UserDetails{
 	//패스워드 비교를 위한 패스워드 리턴
 	@Override
 	public String getPassword() {
+		System.out.println("usersyuser" + user.getPassword());
 		return user.getPassword();
 	}
 
