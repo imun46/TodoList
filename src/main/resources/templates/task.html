@@ -8,6 +8,19 @@
     <style>
 	</style>
 	<script type="text/javascript">
+		function toggleBtn(){
+			let task = document.querySelector('.task');
+			let subContent = document.querySelector('.subContent');
+			let toggleBtn= document.querySelector('.toggleBtn');
+
+			subContent.classList.toggle("active");
+			if(subContent.classList.contains("active")){
+				toggleBtn.value="▲";
+				task.style.borderRadius = "10px 10px 0px 0px";
+			}else{
+				toggleBtn.value="▼";
+			}
+		}
 	</script>
 	</head>
 	<body>
@@ -22,7 +35,7 @@
 				<ul class="task">	
 					<li>기타</li>
 					<li>종욱이 간식사기</li>
-					<li><input type="button" value="▼"></li>
+					<li><input type="button" class="toggleBtn" value="▼" onclick="toggleBtn()"></li>
 				</ul>
 				<ul class="subContent">
 					<li>베라 아이스크림 사주기</li>
