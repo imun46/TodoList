@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 메인화면 </title>
+    <title> 할 일 </title>
+	<link rel="stylesheet" href="../static/css/index.css">
     <style>
 	</style>
 	<script type="text/javascript">
-	function login(){
-	    // 폼의 각 필드를 확인합니다.
-		if (document.loginForm.id.value == "") {
-	        alert("아이디를 입력해주세요");
-	        loginForm.username.focus();
-	        return false; 
-    	}
-		if(document.loginForm.password.value == ""){
-			alert("비밀번호를 입력해주세요")
-			loginForm.password.focus();
-			return false;
-		}
-		
-		document.loginForm.action="/login";
-		document.loginForm.method="POST"
-		document.loginForm.submit();
-	}
 	</script>
 	</head>
 	<body>
-		<h2>만들거</h2>		
+		<div class="container">
+			<div class="title">
+				<p>Todo List</p>
+			</div>
+			<div class="additionBtn">
+				<input type="button" value="추가" onclick=""/>
+			</div>
+			<div class="taskList">
+				<ul class="task">	
+					<li>기타</li>
+					<li>종욱이 간식사기</li>
+					<li><input type="button" value="▼"></li>
+				</ul>
+				<ul class="subContent">
+					<li>베라 아이스크림 사주기</li>
+					<li>2024-05-11 ~ 2024-06-11</li>
+					<li>
+						<input type="button" value="수정">
+						<input type="button" value="삭제">
+					</li>
+				</ul>
+			</div>
+		</div>
 	</body>
 </html>
