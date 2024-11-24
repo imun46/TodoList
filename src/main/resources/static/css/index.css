@@ -14,7 +14,6 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -186,7 +185,41 @@ a:hover {
     /* display: none; */
     width: 400px; height: 180px;
     margin: 0 auto;
-    padding: 10px 15px;
     background-color: white;
     border-radius: 0 0 10px 10px;
+    max-height: 0; /* 초기 높이를 0으로 설정 */
+    overflow: hidden; /* 넘치는 콘텐츠 숨기기 */
+    transition: max-height 0.3s ease-out; /* 부드럽게 펼쳐지도록 설정 */
+}
+.subContent.active {
+    max-height: 180px; /* 적당한 최대 높이 지정 (내용 크기에 맞게 조정 가능) */
+    transition: max-height 0.3s ease-in;
+}
+
+.subContent li {
+    margin-left: 20px;
+}
+.subContent li:first-child{
+    border-top: 1px solid #ccc;
+    height: 100px;
+    font-size: 20px;
+    margin: 0 20px;
+    padding-top: 10px;
+}
+.subContent li:nth-child(2){
+    color: #808080;
+}
+.subContent li:nth-child(3){
+    text-align: right;
+    margin-right: 20px;
+}
+.subContent li:nth-child(3) input {
+    width: 40px; height: 25px;
+    cursor: pointer;
+    border: 0px; border-radius: 5px;
+    background-color: #3361D4;
+    color: white;
+}
+.subContent li:nth-child(3) input:hover{
+    background-color: #204396;
 }
