@@ -14,11 +14,15 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class CustomUserDetails implements UserDetails{
 	
 	@Autowired
 	private Users user;
+	
+	public CustomUserDetails(Users user) {
+		System.out.println("유저" + user);
+	    this.user = user;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

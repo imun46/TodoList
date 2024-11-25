@@ -62,7 +62,7 @@
 	</select>
 	
 		<!-- 유저 아이디로 회원정보 출력 -->
-	<select id="selectUserById" parameterType="String" resultType="com.my.todoList.user.Users">
+	<select id="selectUserById" parameterType="String" resultMap="userMap">
 		SELECT u.user_no, u.id, u.password, u.email 
 			FROM users u 
 			WHERE u.id = #{id}

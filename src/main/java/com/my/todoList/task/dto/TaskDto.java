@@ -25,6 +25,7 @@ public class TaskDto {
 	private Date endDate;
 	private String state;
 	private Integer categoryNo;
+	private String categoryName;
 	private Integer userNo;
 	
 	public static Task toTask(TaskDto taskDto) {
@@ -35,7 +36,10 @@ public class TaskDto {
 				.startDate(taskDto.getStartDate())
 				.endDate(taskDto.getEndDate())
 				.state(taskDto.getState())
-				.category(Category.builder().categoryNo(taskDto.getCategoryNo()).build())
+				.category(Category.builder()
+						.categoryNo(taskDto.getCategoryNo())
+						.name(taskDto.getCategoryName())
+						.build())
 				.users(Users.builder().userNo(taskDto.userNo).build())
 				.build();
 	}

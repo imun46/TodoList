@@ -19,27 +19,35 @@
 				task.style.borderRadius = "10px 10px 0px 0px";
 			}else{
 				toggleBtn.value="▼";
+				task.style.borderRadius = "10px";
 			}
 		}
 	</script>
 	</head>
 	<body>
 		<div class="container">
+			<div class="logout">
+				<input type="button" value="로그아웃" onclick="location.href='/logout'">
+			</div>
 			<div class="title">
 				<p>Todo List</p>
 			</div>
 			<div class="additionBtn">
 				<input type="button" value="추가" onclick=""/>
 			</div>
-			<div class="taskList">
+			<div class="taskList" th:each="task:${taskList}" th:object="${task}">
 				<ul class="task">	
-					<li>기타</li>
-					<li>종욱이 간식사기</li>
+					<li th:text="${task.categoryName}">task</li>
+					<li th:text="${task.title}">종욱이 간식사기</li>
 					<li><input type="button" class="toggleBtn" value="▼" onclick="toggleBtn()"></li>
 				</ul>
 				<ul class="subContent">
-					<li>베라 아이스크림 사주기</li>
-					<li>2024-05-11 ~ 2024-06-11</li>
+					<li th:text="${task.content}">베라 아이스크림 사주기</li>
+					<li> 
+						<span th:text="${task.startDate}">2024-05-11</span> 
+						~ 
+						<span th:text="${task.endDate}">2024-06-11</span>
+					</li>
 					<li>
 						<input type="button" value="수정">
 						<input type="button" value="삭제">

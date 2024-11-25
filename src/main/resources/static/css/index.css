@@ -126,6 +126,21 @@ a:hover {
 }
 
 /*task*/
+.logout {
+    text-align: right;
+}
+.logout input{
+    cursor: pointer;
+    color: #3361D4;
+    margin: 20px 30px;
+    border: 0px;
+}
+.logout input:hover{
+    color: #204396;
+}
+.logout input:active{
+    color: white;
+}
 .additionBtn{
     width: 400px; height: 40px;
     margin: 0 auto;
@@ -185,7 +200,7 @@ a:hover {
 }
 .subContent{
     /* display: none; */
-    width: 400px; height: 180px;
+    width: 400px; height: 130px;
     margin: 0 auto;
     background-color: white;
     border-radius: 0 0 10px 10px;
@@ -194,7 +209,7 @@ a:hover {
     transition: max-height 0.3s ease-out; /* 부드럽게 펼쳐지도록 설정 */
 }
 .subContent.active {
-    max-height: 180px; /* 적당한 최대 높이 지정 (내용 크기에 맞게 조정 가능) */
+    max-height: 130px; /* 적당한 최대 높이 지정 (내용 크기에 맞게 조정 가능) */
     transition: max-height 0.3s ease-in;
 }
 
@@ -203,7 +218,7 @@ a:hover {
 }
 .subContent li:first-child{
     border-top: 1px solid #ccc;
-    height: 100px;
+    height: 50px;
     font-size: 20px;
     margin: 0 20px;
     padding-top: 10px;

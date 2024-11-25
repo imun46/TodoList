@@ -36,6 +36,7 @@ public class Task {
 				.endDate(task.getEndDate())
 				.state(task.getState())
 				.categoryNo(task.category.getCategoryNo())
+				.categoryName(task.getCategory().getName())
 				.userNo(task.users.getUserNo())
 				.build();
 	}

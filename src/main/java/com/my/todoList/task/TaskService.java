@@ -39,9 +39,9 @@ public class TaskService {
 		List<Task> taskList = taskDao.selectByUserNo(UserNo);
 		List<TaskDto> taskDtoList = new ArrayList<>();
 		for (Task task : taskList) {
-			Task.toTaskDto(task);
+			taskDtoList.add(Task.toTaskDto(task));
 		}
-		return null;
+		return taskDtoList;
 				
 	}
 }
