@@ -39,7 +39,9 @@ a:hover {
     text-decoration: underline;
 }
 
-
+.fz30{
+    font-size: 30px;
+}
 
 /* container */
 .container{
@@ -58,7 +60,7 @@ a:hover {
 }
 
 /* 로그인 폼 */
-.loginForm, .signupForm {
+.loginForm, .signupForm, .taskForm {
     margin: 80px auto;
     text-align: center;
 }
@@ -143,7 +145,7 @@ a:hover {
 .taskList{
     margin-top: 20px;
 }
-.taskList .task {
+.taskList .task{
     width: 400px; height: 50px;
     line-height: 50px;
     display: flex;
@@ -222,4 +224,88 @@ a:hover {
 }
 .subContent li:nth-child(3) input:hover{
     background-color: #204396;
+}
+
+
+/*task form*/
+.taskForm{
+    margin-top: 0px;
+    width: 400px; height: 350px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.taskForm .task {
+    width: 400px; height: 50px;
+    display: flex;
+}
+.title-container{
+    width: 80%; height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+}
+#dropdown{
+    width: 55px; height: 30px;
+    cursor: pointer;
+    border: 0px;
+    background-color: #989898;
+    border-radius: 50px;
+    color: white;
+    appearance: none;
+    padding-left: 13px; 
+}
+#dropdown:focus{
+    border: 1px solid #989898;
+}
+.task-title {
+    width: 200px; height: 40px;
+    line-height: 40px;
+    padding: 5px 10px;
+    vertical-align: center;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    margin: 10px 0 0 10px;
+}
+.task-title:focus{
+    outline: none;
+}
+.content-container{
+    width: 80%; height: 200px;
+    margin: 20px auto 10px auto;
+    border: 1px solid #ccc;
+}
+.task-content{
+    width: 90%; height: 140px;
+    font-size: 15px;
+    border: 1px;
+    outline: none;
+    padding-top:15px;
+    resize: none;
+}
+.date-container{
+    text-align-last: left;
+    margin-left: 15px;
+    font-size: 12px;
+}
+.date-container input {
+    -webkit-appearance: none;
+    width: 82px; height: 30px;
+    font-size: 12px;
+    outline: none;
+    border: none;
+}
+.add-btn{
+    width: 80px; height: 35px;
+    background-color: #3361D4;
+    cursor: pointer;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    margin-left: 230px;
+
+}
+.add-btn:hover{
+    background: #204396;
 }

@@ -31,7 +31,6 @@ public class CustomUserDetails implements UserDetails{
 	//패스워드 비교를 위한 패스워드 리턴
 	@Override
 	public String getPassword() {
-		System.out.println("usersyuser" + user.getPassword());
 		return user.getPassword();
 	}
 

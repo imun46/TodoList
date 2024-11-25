@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 할 일 </title>
+	<link rel="stylesheet" href="css/index.css">
+    <style>
+	</style>
+	<script>
+		function addClick(){
+			const taskForm = document.getElementsByClassName('taskForm');
+
+			taskForm.action ="/task_action"
+			taskForm.method="POST";
+			taskForm.submmit();
+		}
+
+	</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="title">
+				<p>Todo List</p>
+				<p class="fz30"> 추가 할 일을 등록해 주세요</p>
+			</div>
+			<form class="taskForm">
+				<div class="title-container">
+					<select name="categoryNo" id="dropdown">
+						<option value="1">업무</option>
+						<option value="2">공부</option>
+						<option value="3">습관</option>
+						<option value="4">기타</option>
+					</select>
+					<input type="text" name="title" class="task-title" value="어쩌구저쩌구" maxlength="20">
+				</div>
+				<div class="content-container">
+					<textarea class="task-content" name="content">
+						하이하이
+					</textarea>
+					<div class="date-container">
+						<input type="date" id="start-date" name="startDate">
+						~
+						<input type="date" id="end-date" name="endDate">
+					</div>
+				</div>
+				<input type="button" value="추가" class="add-btn" onclick="addClick()">
+			</form>
+		</div>
+	</body>
+</html>

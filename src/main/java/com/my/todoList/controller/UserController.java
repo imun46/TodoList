@@ -35,12 +35,12 @@ public class UserController {
 	 */	
 	
 	/*회원가입*/
-	@GetMapping("/user/signup")
+	@GetMapping("/signup")
 	public String signup() {
 		return "signup";
 	}
 	
-	@PostMapping("user/signup")
+	@PostMapping("/signup")
 	public String signupAction(@ModelAttribute UserDto user){
 	    try {
 	    	userService.creatUser(user);
