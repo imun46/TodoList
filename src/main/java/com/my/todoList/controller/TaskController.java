@@ -28,11 +28,7 @@ public class TaskController {
 	@GetMapping("/task")
 	public String main(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
 		try {
-			System.out.println("userDetails---->" + userDetails);
-			System.out.println("userDetails.getUserNo()---->" + userDetails.getUserNo());
-			System.out.println("userDetails.getUserNo()---->" + userDetails.getUsername());
 			List<TaskDto> taskList = taskService.findTaskByUserNo(userDetails.getUserNo());
-			System.out.println("taskList ---->" + taskList);
 			model.addAttribute("taskList",taskList);
 			return "task"; 
 		} catch (Exception e) {
