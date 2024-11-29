@@ -1,8 +1,8 @@
 package com.my.todoList.task;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.my.todoList.category.Category;
 import com.my.todoList.task.dto.TaskDto;
 import com.my.todoList.user.Users;
@@ -20,8 +20,8 @@ public class Task {
 	private Integer taskNo;
 	private String title;
 	private String content;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private String state;
 	
 	private Category category;

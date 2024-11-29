@@ -8,10 +8,11 @@
     <style>
 	</style>
 	<script type="text/javascript">
-		function toggleBtn(){
-			let task = document.querySelector('.task');
-			let subContent = document.querySelector('.subContent');
-			let toggleBtn= document.querySelector('.toggleBtn');
+		function toggleBtn(taskId){
+			console.log(taskId)
+			//const task = document.querySelector(`#task-${taskId}`);
+			const subContent = document.querySelector('.subContent');
+			const toggleBtn= document.querySelector('.toggleBtn');
 
 			subContent.classList.toggle("active");
 			if(subContent.classList.contains("active")){
@@ -39,7 +40,7 @@
 				<ul class="task">	
 					<li th:text="${task.categoryName}">task</li>
 					<li th:text="${task.title}">종욱이 간식사기</li>
-					<li><input type="button" class="toggleBtn" value="▼" onclick="toggleBtn()"></li>
+					<li><input type="button" id=`toggleBtn-${task.id}` value="▼" onclick="toggleBtn(task.id)"></li>
 				</ul>
 				<ul class="subContent">
 					<li th:text="${task.content}">베라 아이스크림 사주기</li>

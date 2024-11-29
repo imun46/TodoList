@@ -1,8 +1,6 @@
 package com.my.todoList.task.dto;
 
-import java.util.Date;
-
-import org.springframework.security.core.userdetails.User;
+import java.time.LocalDate;
 
 import com.my.todoList.category.Category;
 import com.my.todoList.task.Task;
@@ -21,8 +19,8 @@ public class TaskDto {
 	private Integer taskNo;
 	private String title;
 	private String content;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private String state;
 	private Integer categoryNo;
 	private String categoryName;
