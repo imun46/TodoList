@@ -1,5 +1,9 @@
 # To-do List
+회원가입 진행 후 해야할 일을 관리할 수 있는 To-do List 이다.
+
+## 기술스택
 기술스택: HTML, CSS, JavaScript, Spring Boot, Oracle, Mybatis, Thymeleaf
+<a href ="	https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
 
 ## 목표
 - 회원가입, 로그인 기능 Security 적용
