@@ -3,7 +3,7 @@
 
 ## 기술스택
 기술스택: HTML, CSS, JavaScript, Spring Boot, Oracle, Mybatis, Thymeleaf
-![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white) ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css&logoColor=white)
+
 ## 목표
 - 회원가입, 로그인 기능 Security 적용
 - 간단한 CRUD 구현
@@ -11,6 +11,7 @@
 ## 기능
 - 회원가입 : security 적용, 비밀번호 암호화
 - 로그인 : security적용, 사용자 인증과 비밀번호 암호화
+- 로그아웃 : security 적용, 세션 무효화
 - 할일 추가
 - 할일 삭제
 - 할일 수정
