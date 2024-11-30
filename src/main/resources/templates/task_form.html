@@ -21,14 +21,13 @@
 	        document.getElementById('start-date').value = formattedDate;
 	        document.getElementById('end-date').value = formattedDate;
 			
-	        
-			function addClick(){
-				const taskForm = document.querySelector('.taskForm');
-	
-				taskForm.action ="/task_action"
-				taskForm.method="POST";
-				taskForm.submit();
-			}
+		}
+		function addClick(){
+			const taskForm = document.querySelector('.taskForm');
+
+			taskForm.action ="/task_action"
+			taskForm.method="POST";
+			taskForm.submit();
 		}
 	</script>
 	</head>
@@ -47,7 +46,7 @@
 						<option value="3">습관</option>
 						<option value="4">기타</option>
 					</select>
-					<input type="text" name="title" class="task-title" value="" maxlength="20">
+					<input type="text" name="title" class="task-title" value="" maxlength="20" autocomplete="off">
 				</div>
 				<div class="content-container">
 					<textarea class="task-content" name="content">

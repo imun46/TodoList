@@ -1,5 +1,6 @@
 package com.my.todoList.task;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -7,9 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.my.todoList.category.Category;
 import com.my.todoList.task.dto.TaskDto;
-import com.my.todoList.user.Users;
 
 @SpringBootTest
 class TaskServiceTest {
@@ -22,7 +21,7 @@ class TaskServiceTest {
 
 //	@Test
 	void testCreateTask() throws Exception {
-		Date date = new Date();
+		LocalDate date = LocalDate.now();
 		TaskDto task = TaskDto.builder()
 				.title("똥싸기")
 				.content("아침에 똥싸는게 좋잖아")
@@ -41,7 +40,7 @@ class TaskServiceTest {
 
 //	@Test
 	void testUpdate() throws Exception {
-		Date date = new Date();
+		LocalDate date = LocalDate.now();
 		TaskDto task = TaskDto.builder()
 				.taskNo(3)
 				.title("똥싸기")

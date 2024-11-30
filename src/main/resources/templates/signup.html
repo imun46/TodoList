@@ -53,19 +53,19 @@
         </div>
         <form name="signupForm" id = "signupForm" class="signupForm">
             <div>
-                <input type="text" name="id" id="id" placeholder="아이디" onclick="document.querySelector('.idError').innerHTML = '';">
+                <input type="text" name="id" id="id" placeholder="아이디" autocomplete="off" onclick="document.querySelector('.idError').innerHTML = '';">
                 <p class="idError"></p>
             </div>
             <div>
-                <input type="password" name="password" id="password" placeholder="비밀번호" onclick="document.querySelector('.pwError').innerHTML =''">
+                <input type="password" name="password" id="password" placeholder="비밀번호" autocomplete="off" onclick="document.querySelector('.pwError').innerHTML =''">
                 <p class="pwError"></p>
             </div>
             <div>
-                <input type="password" name="password2" id="password2" placeholder="비밀번호 확인" onclick="document.querySelector('.pwError2').innerHTML =''">
+                <input type="password" name="password2" id="password2" placeholder="비밀번호 확인" autocomplete="off" onclick="document.querySelector('.pwError2').innerHTML =''">
                 <p class="pwError2"></p>
             </div>
             <div>
-                <input type="text" name="email" id="email" placeholder="이메일" onclick="document.querySelector('.emailError').innerHTML =''">
+                <input type="text" name="email" id="email" placeholder="이메일" autocomplete="off" onclick="document.querySelector('.emailError').innerHTML =''">
                 <p class="emailError"></p>
             </div>
             <div class="buttonContainer">
