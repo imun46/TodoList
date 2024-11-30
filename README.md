@@ -1,2 +1,2 @@
-# TodoList
-miniProject
+# To-do List
+개발기간:  2024.11.14 ~ 2024.11.30 (약 2주)
