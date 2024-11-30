@@ -39,7 +39,8 @@ public class TaskController {
 	
 	/* 할일 등록 */
 	@GetMapping("/task_form")
-	public String createTask(){
+	public String createTask(@AuthenticationPrincipal CustomUserDetails userDetails,Model model){
+		model.addAttribute("userNo",userDetails.getUserNo());
 		return "task_form";
 	}
 	
@@ -56,29 +57,36 @@ public class TaskController {
 	}
 	
 	/* 할일 수정 */
-	@GetMapping("/task_modify_form")
-	public String updateTask(@ModelAttribute TaskDto taskDto){
-		return "task_modify_form";
-	}
-	@PostMapping("/task_modify_action")
-	public String updateTaskAction(@ModelAttribute TaskDto taskDto){
+	@PostMapping("/task_modify_form")
+	public String updateTask(@RequestParam(name="taskNo") Integer taskNo, Model model){
 		try {
-			taskService.update(taskDto);
-			return "1개 출력";
+			TaskDto task = taskService.findTaskByTaskNo(taskNo);
+			model.addAttribute("task", task);
+			return "task_modify_form";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error-page";
 		}
 	}
 	
-
-	/* 할일 출력(detail) */
-	@GetMapping(value="/task_view", params = "task_no")
-	public String findTaskByTaskNo(@RequestParam(name="task_no") Integer taskNo, Model model){
+	@PostMapping("/task_modify_action")
+	public String updateTaskAction(@ModelAttribute TaskDto taskDto){
 		try {
-			TaskDto task = taskService.findTaskByTaskNo(taskNo);
-			model.addAttribute("task", task);
-			return "task_view";
+			System.out.println("controller---->" + taskDto);
+			taskService.update(taskDto);
+			return "redirect:/task";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error-page";
+		}
+	}
+	
+	/*할일 삭제*/
+	@PostMapping("/task_delete")
+	public String deleteTask(@RequestParam(name="taskNo") Integer taskNo) {
+		try {
+			taskService.deleteTask(taskNo);
+			return "redirect:/task";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error-page";

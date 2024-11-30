@@ -8,23 +8,38 @@
     <style>
 	</style>
 	<script>
-		function addClick(){
-			const taskForm = document.getElementsByClassName('taskForm');
+		window.onload = function(){
+	      	// 오늘 날짜 구하기
+	        const today = new Date();
+	        const year = today.getFullYear();
+	        const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+	        const day = String(today.getDate()).padStart(2, '0'); // 날짜가 한 자릿수일 경우 앞에 0 추가
 
-			taskForm.action ="/task_action"
-			taskForm.method="POST";
-			taskForm.submmit();
+	        const formattedDate = `${year}-${month}-${day}`; // yyyy-mm-dd 형식으로 변환
+
+	        // start-date와 end-date에 오늘 날짜를 설정
+	        document.getElementById('start-date').value = formattedDate;
+	        document.getElementById('end-date').value = formattedDate;
+			
+	        
+			function addClick(){
+				const taskForm = document.querySelector('.taskForm');
+	
+				taskForm.action ="/task_action"
+				taskForm.method="POST";
+				taskForm.submit();
+			}
 		}
-
 	</script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="title">
 				<p>Todo List</p>
-				<p class="fz30"> 추가 할 일을 등록해 주세요</p>
+				<p class="fz20 sub-title" >할 일을 등록해 주세요</p>
 			</div>
-			<form class="taskForm">
+			<form class="taskForm" name="taskForm">
+				<input type="hidden" name="userNo" th:value="${userNo}"></input>
 				<div class="title-container">
 					<select name="categoryNo" id="dropdown">
 						<option value="1">업무</option>
@@ -32,19 +47,19 @@
 						<option value="3">습관</option>
 						<option value="4">기타</option>
 					</select>
-					<input type="text" name="title" class="task-title" value="어쩌구저쩌구" maxlength="20">
+					<input type="text" name="title" class="task-title" value="" maxlength="20">
 				</div>
 				<div class="content-container">
 					<textarea class="task-content" name="content">
-						하이하이
+						
 					</textarea>
 					<div class="date-container">
-						<input type="date" id="start-date" name="startDate">
+						<input type="date" id="start-date" name="startDate" >
 						~
 						<input type="date" id="end-date" name="endDate">
 					</div>
 				</div>
-				<input type="button" value="추가" class="add-btn" onclick="addClick()">
+				<input type="button" value="추가" class="add-btn" onclick="addClick();">
 			</form>
 		</div>
 	</body>

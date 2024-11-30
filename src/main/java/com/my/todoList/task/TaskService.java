@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.my.todoList.category.CategoryDao;
+import com.my.todoList.category.CategoryService;
 import com.my.todoList.task.dto.TaskDto;
 
 @Service
@@ -14,8 +16,13 @@ public class TaskService {
 	@Autowired
 	private TaskDao taskDao;
 	
+	@Autowired
+	private CategoryService categoryService;
+	
 	/*할일 저장*/
 	public Integer createTask(TaskDto taskDto) throws Exception {
+		String categoryName = categoryService.selectCategoryName(taskDto.getCategoryNo());
+		taskDto.setCategoryName(categoryName);
 		Task task = TaskDto.toTask(taskDto);
 		return taskDao.insert(task);
 	}
@@ -26,6 +33,7 @@ public class TaskService {
 	/*할일 수정*/
 	public Integer update(TaskDto taskDto) throws Exception{
 		Task task = TaskDto.toTask(taskDto);
+		System.out.println("taskService-->" + task);
 		return taskDao.update(task);
 	}
 	/*할일 출력 특정 pk 한개*/

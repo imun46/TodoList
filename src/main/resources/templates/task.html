@@ -8,21 +8,40 @@
     <style>
 	</style>
 	<script type="text/javascript">
-		function toggleBtn(taskId){
-			console.log(taskId)
-			//const task = document.querySelector(`#task-${taskId}`);
-			const subContent = document.querySelector('.subContent');
-			const toggleBtn= document.querySelector('.toggleBtn');
-
-			subContent.classList.toggle("active");
-			if(subContent.classList.contains("active")){
-				toggleBtn.value="▲";
-				task.style.borderRadius = "10px 10px 0px 0px";
-			}else{
-				toggleBtn.value="▼";
-				task.style.borderRadius = "10px";
-			}
+		function toggleBtn(taskNo) {
+		    // 클릭된 버튼, 해당 task, 관련된 subContent를 동적으로 찾음
+		    const button = document.querySelector('#toggleBtn-'+taskNo);
+		    const taskElement =  document.querySelector('.task'); // 클릭된 버튼의 상위 task 요소
+		    const subContent = document.querySelector('#subContent-'+taskNo); // task의 바로 아래 subContent
+			
+		    // subContent 활성화/비활성화 처리
+		    subContent.classList.toggle("active");
+	
+		    // 버튼 및 테두리 스타일 변경
+		    if (subContent.classList.contains("active")) {
+		        button.value = "▲"; // 버튼 텍스트 변경
+		        taskElement.style.borderRadius = "10px 10px 0px 0px"; // 상단 둥글게
+		    } else {
+		        button.value = "▼"; // 버튼 텍스트 변경
+		        taskElement.style.borderRadius = "10px"; // 전체 둥글게
+		    }
 		}
+		function modifyBtn(taskNo){
+			const taskForm = document.querySelector('#taskForm-'+taskNo);
+			
+			taskForm.action="/task_modify_form";
+			taskForm.method="POST";
+			taskForm.submit();
+		}
+		
+		function deleteBtn(taskNo){
+			const taskForm = document.querySelector('#taskForm-'+taskNo);
+			
+			taskForm.action="/task_delete";
+			taskForm.method="POST";
+			taskForm.submit();
+		}
+		
 	</script>
 	</head>
 	<body>
@@ -34,26 +53,30 @@
 				<p>Todo List</p>
 			</div>
 			<div class="additionBtn">
-				<input type="button" value="추가" onclick=""/>
+				<input type="button" value="추가" onclick="location.href='/task_form'"/>
 			</div>
-			<div class="taskList" th:each="task:${taskList}" th:object="${task}">
-				<ul class="task">	
-					<li th:text="${task.categoryName}">task</li>
-					<li th:text="${task.title}">종욱이 간식사기</li>
-					<li><input type="button" id=`toggleBtn-${task.id}` value="▼" onclick="toggleBtn(task.id)"></li>
-				</ul>
-				<ul class="subContent">
-					<li th:text="${task.content}">베라 아이스크림 사주기</li>
-					<li> 
-						<span th:text="${task.startDate}">2024-05-11</span> 
-						~ 
-						<span th:text="${task.endDate}">2024-06-11</span>
-					</li>
-					<li>
-						<input type="button" value="수정">
-						<input type="button" value="삭제">
-					</li>
-				</ul>
+			<div class="taskList" th:each="task : ${taskList}">
+			    <ul class="task">
+			        <li th:text="${task.categoryName}">카테고리</li>
+			        <li th:text="${task.title}">제목</li>
+			        <li>
+						<input type="button" value="▼"  th:onclick="'toggleBtn(' + ${task.taskNo} + ')'" th:id="'toggleBtn-'+${task.taskNo}">
+			        </li>
+			    </ul>
+			    <ul th:id="'subContent-'+${task.taskNo}" class="subContent">
+			        <li th:text="${task.content}">내용</li>
+			        <li>
+			            <span th:text="${task.startDate}">시작일</span> ~ 
+			            <span th:text="${task.endDate}">종료일</span>
+			        </li>
+			        <li>
+			        	<form th:id="'taskForm-'+${task.taskNo}">
+				            <input type="hidden" name="taskNo" th:value="${task.taskNo}">
+				            <input type="button" value="수정" th:onclick="'modifyBtn('+${task.taskNo}+')'">
+				            <input type="button" value="삭제" th:onclick="'deleteBtn('+${task.taskNo}+')'">
+			        	</form>
+			        </li>
+			    </ul>
 			</div>
 		</div>
 	</body>

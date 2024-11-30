@@ -14,4 +14,9 @@ public class CategoryService {
 		return categoryDao.insert(category);
 	}
 	
+	/*카테고리 이름 찾기*/
+	public String selectCategoryName(Integer categoryNo) throws Exception{
+		return categoryDao.selectCategoryName(categoryNo);
+	}
+	
 }

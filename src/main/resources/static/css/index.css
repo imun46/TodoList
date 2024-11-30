@@ -39,10 +39,9 @@ a:hover {
     text-decoration: underline;
 }
 
-.fz30{
-    font-size: 30px;
+.fz20{
+    font-size: 20px;
 }
-
 /* container */
 .container{
     width: 700px; height: 650px;
@@ -243,6 +242,9 @@ a:hover {
 
 
 /*task form*/
+.sub-title{
+    font-family: 'Pretendard-Regular';
+}
 .taskForm{
     margin-top: 0px;
     width: 400px; height: 350px;
@@ -276,11 +278,11 @@ a:hover {
 .task-title {
     width: 200px; height: 40px;
     line-height: 40px;
-    padding: 5px 10px;
+    padding: 2px 8px;
     vertical-align: center;
     font-size: 18px;
     border: 1px solid #ccc;
-    margin: 10px 0 0 10px;
+    margin: 15px 0 0 10px;
 }
 .task-title:focus{
     outline: none;
@@ -305,8 +307,8 @@ a:hover {
 }
 .date-container input {
     -webkit-appearance: none;
-    width: 82px; height: 30px;
-    font-size: 12px;
+    width: 100px; height: 30px;
+    font-size: 13px;
     outline: none;
     border: none;
 }

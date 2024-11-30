@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 할 일 수정 </title>
+	<link rel="stylesheet" href="css/index.css">
+    <style>
+	</style>
+	<script>
+		function modifyClick(){
+			const taskForm = document.querySelector('.taskForm');
+			
+			taskForm.action = "/task_modify_action";
+			taskForm.method = "POST";
+			taskForm.submit();
+		}
+	</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="title">
+				<p>Todo List</p>
+				<p class="fz20 sub-title" >할 일 수정하기</p>
+			</div>
+			<form class="taskForm" name="taskForm" th:object="${task}">
+				<input type="hidden" name="taskNo" th:value="${task.taskNo}"></input>
+				<input type="hidden" name="userNo" th:value="${task.userNo}"></input>
+				<input type="hidden" name="state" th:value="${task.state}"></input>
+				<div class="title-container">
+					<select name="categoryNo" id="dropdown">
+						<option value="1" th:selected="${task.categoryNo == 1}">업무</option>
+						<option value="2" th:selected="${task.categoryNo == 2}">공부</option>
+						<option value="3" th:selected="${task.categoryNo == 3}">습관</option>
+						<option value="4" th:selected="${task.categoryNo == 4}">기타</option>
+					</select>
+					<input type="text" name="title" class="task-title" maxlength="20" th:value="${task.title}">
+				</div>
+				<div class="content-container">
+					<textarea class="task-content" name="content" th:text="${task.content}">
+						
+					</textarea>
+					<div class="date-container">
+						<input type="date" id="start-date" name="startDate" th:value="${task.startDate}">
+						~
+						<input type="date" id="end-date" name="endDate" th:value="${task.endDate}">
+					</div>
+				</div>
+				<input type="button" value="수정" class="add-btn" onclick="modifyClick();">
+			</form>
+		</div>
+	</body>
+</html>

@@ -16,4 +16,9 @@ public class CategoryDaoImpl implements CategoryDao{
 		return categoryMapper.insert(category);
 	}
 
+	@Override
+	public String selectCategoryName(Integer categoryNo) throws Exception {
+		return categoryMapper.selectCategoryName(categoryNo);
+	}
+
 }

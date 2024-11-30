@@ -12,6 +12,12 @@
 			SELECT category_category_no_seq.nextval FROM DUAL;
 		</selectKey>
 		INSERT INTO category
-		VALUES(#{categoryNo}, #{name});
+		VALUES(#{categoryNo}, #{name})
 	</insert>
+	
+	<select id="selectCategoryName" parameterType="Integer" resultType="String">
+		SELECT name
+		FROM category
+		WHERE category_no = #{categoryNo}
+	</select>
 </mapper>

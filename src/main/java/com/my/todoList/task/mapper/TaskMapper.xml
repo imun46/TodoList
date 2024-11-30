@@ -45,7 +45,7 @@
 	
 	<!-- 특정 할일 1개 출력-->
 	<select id="selectByTaskNo" parameterType="Integer" resultMap="taskMap">
-		SELECT t.task_no, t.title, t.content, t.startdate, t.enddate, t.state, c.category_no, c.name
+		SELECT t.task_no, t.title, t.content, t.startdate, t.enddate, t.state, t.user_no, c.category_no, c.name
 		FROM task t
 		JOIN category c
 		ON t.category_no = c.category_no 
