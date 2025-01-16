@@ -15,7 +15,7 @@
 - 할일 (CRUD)
 
 ## ERD
-<img width="500" alt="erd" src="https://github.com/user-attachments/assets/0d850167-26de-488d-ad02-42e744326123" />
+<img width="650" alt="erd" src="https://github.com/user-attachments/assets/0d850167-26de-488d-ad02-42e744326123" />
 
 ## 결과물
 <img width="400" alt="main_01" src="https://github.com/user-attachments/assets/b8a21393-899c-4806-af4e-04685b5ebe82" />
