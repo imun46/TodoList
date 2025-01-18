@@ -16,7 +16,7 @@ VALUES(ROLES_role_no_SEQ.nextval, 'user');
 
 --유저 1
 INSERT INTO users
-VALUES(USERS_user_no_SEQ.nextval, 'test1','1111','aaa@naver.com');
+VALUES(USERS_user_no_SEQ.nextval, 'test','$2a$10$0H7PRpTgR565XlJj.5Sxj.rDeWGcL.SfPJShHkq//pFXkmoWrgJYi','aaa@naver.com');
 INSERT INTO USER_ROLES
 VALUES(USER_ROLES_user_role_no_SEQ.nextval, USERS_user_no_SEQ.currval, 2);
 
@@ -39,3 +39,5 @@ INSERT INTO task
 VALUES(TASK_task_no_SEQ.nextval,'오전 업무','메일 확인',sysdate,sysdate,'active',1,1);
 INSERT INTO task
 VALUES(TASK_task_no_SEQ.nextval,'개발공부','백엔드 프로젝트 수정',sysdate,sysdate,'active',2,1);
+
+commit;
