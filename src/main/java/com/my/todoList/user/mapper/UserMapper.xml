@@ -11,14 +11,12 @@
 		<collection property="taskList" javaType="java.util.List" 
 		ofType="com.my.todoList.task.Task"
 		resultMap="com.my.todoList.task.mapper.TaskMapper.taskMap"
-		resultOrdered="true"
 		/>
 		
 		 <!-- userRole 컬렉션 매핑 -->
 		<collection property="userRoles" javaType="java.util.List"
 		ofType="com.my.todoList.role.Roles"
 		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap
-		resultOrdered="true"
 		"></collection>
 			
 	</resultMap>
