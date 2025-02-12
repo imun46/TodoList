@@ -61,11 +61,11 @@
 			WHERE u.user_no = #{userNo}
 	</select>
 	
-		<!-- 유저 아이디로 회원정보 출력 -->
+	<!-- 유저 아이디로 회원정보 출력 -->
 	<select id="selectUserById" parameterType="String" resultMap="userMap">
 		SELECT u.user_no, u.id, u.password, u.email 
-			FROM users u 
-			WHERE u.id = #{id}
+			FROM Users u 
+			WHERE u.id =#{id}
 	</select>
 	
 	<select id="selectUserAll" resultMap="userMap">

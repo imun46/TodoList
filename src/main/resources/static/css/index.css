@@ -307,7 +307,7 @@ a:hover {
 }
 .date-container input {
     -webkit-appearance: none;
-    width: 100px; height: 30px;
+    width: 120px; height: 30px;
     font-size: 13px;
     outline: none;
     border: none;
