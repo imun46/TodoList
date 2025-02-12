@@ -31,10 +31,14 @@
 	</environments>
 	
 	<mappers>
+	<!--
 		<mapper class="com.my.todoList.user.mapper.UserMapper" />
-		<mapper class="com.my.todoList.task.mapper.TaskMapper" />
-		<mapper class="com.my.todoList.category.mapper.CategoryMapper" />
-		<mapper class="com.my.todoList.role.mapper.RoleMapper" />
+		
+	-->
+		<mapper resource="com/my/todoList/mapper/UserMapper.xml" />
+        <mapper resource="com/my/todoList/mapper/TaskMapper.xml" />
+        <mapper resource="com/my/todoList/category/mapper/CategoryMapper.xml" />
+        <mapper resource="com/my/todoList/role/mapper/RoleMapper.xml" />
 	</mappers>
 	
 	
