@@ -16,8 +16,8 @@
 		 <!-- userRole 컬렉션 매핑 -->
 		<collection property="userRoles" javaType="java.util.List"
 		ofType="com.my.todoList.role.Roles"
-		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap
-		"></collection>
+		resultMap="com.my.todoList.role.mapper.RoleMapper.userRoleMap"
+		></collection>
 			
 	</resultMap>
 
@@ -63,7 +63,7 @@
 			WHERE u.user_no = #{userNo}
 	</select>
 	
-		<!-- 유저 아이디로 회원정보 출력 -->
+	<!-- 유저 아이디로 회원정보 출력 -->
 	<select id="selectUserById" parameterType="String" resultMap="userMap">
 		SELECT u.user_no, u.id, u.password, u.email 
 			FROM users u 
